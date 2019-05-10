@@ -6,6 +6,7 @@
     </f7-block>
     <f7-block-title>Load page in panel</f7-block-title>
     <f7-list>
+      
       <f7-list-item link="/about/" title="About"></f7-list-item>
       <f7-list-item link="/form/" title="Form"></f7-list-item>
     </f7-list>
@@ -13,6 +14,8 @@
     <f7-list>
       <f7-list-item link="/about/" title="About" view="#main-view" panel-close></f7-list-item>
       <f7-list-item link="/form/" title="Form" view="#main-view" panel-close></f7-list-item>
+      <f7-list-item link="/login/" title="Login" view="#main-view" panel-close></f7-list-item>
+      <f7-list-item link="/register/" title="Register" view="#main-view" panel-close></f7-list-item>
     </f7-list>
   </f7-page>
 </template>

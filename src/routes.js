@@ -1,4 +1,6 @@
 import HomePage from './pages/home.vue';
+import Login from './pages/login.vue';
+import Register from './pages/register.vue';
 import AboutPage from './pages/about.vue';
 import FormPage from './pages/form.vue';
 import DynamicRoutePage from './pages/dynamic-route.vue';
@@ -11,6 +13,14 @@ export default [
   {
     path: '/',
     component: HomePage,
+  },
+  {
+    path: '/login/',
+    component: Login,
+  },
+  {
+    path: '/register/',
+    component: Register,
   },
   {
     path: '/panel-left/',

@@ -1,5 +1,6 @@
 // Import Vue
 import Vue from 'vue';
+import './firebaseInit';
 
 // Import F7
 import Framework7 from 'framework7/framework7.esm.bundle.js';

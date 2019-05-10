@@ -1,5 +1,9 @@
 # Framework7 Vue + Webpack App Template
 
+https://youtu.be/mG12D07YXwk de Timo Erns
+https://www.youtube.com/watch?v=MoBYBc1dkhE tutorial largo login
+
+
 A full-featured Framework7 Vue with Webpack setup with hot-reload & css extraction. Based on [Vue Webpack Boilerplate](https://github.com/vuejs-templates/webpack)
 
 ## Usage
