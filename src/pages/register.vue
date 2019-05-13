@@ -39,12 +39,12 @@ export default {
       register: function(e) {
         firebase.auth().createUserWithEmailAndPassword(this.username, this.password)
         .then(user => {
-          app.dialog.alert(`User created for ${user.email}`, () => {
-          router.back();
-          });
+          console.log(`User created for ${user.email}`);
+          this.$router.push('/');
+          
         })
         .catch(error => {
-          app.dialog.alert(error.message);
+         console.log(error.message);
         });
 
         e.preventDefault();

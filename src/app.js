@@ -1,5 +1,6 @@
 // Import Vue
 import Vue from 'vue';
+import firebase from 'firebase';
 import './firebaseInit';
 
 // Import F7
