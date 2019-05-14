@@ -25,6 +25,8 @@
 </template>
 
 <script>
+import firebase from 'firebase'; 
+
   export default {
     name: 'login',
     data() {
@@ -34,13 +36,24 @@
       };
     },
     methods: {
-      signIn() {
+      signIn: function(e) {
         const self = this;
         const app = self.$f7;
         const router = self.$f7router;
-        app.dialog.alert(`Username: ${self.username}<br>Password: ${self.password}`, () => {
+       
+        firebase.auth().signInWithEmailAndPassword(this.username, this.password)
+        .then(user => {
+          console.log(`User logged in as ${user.email}`);
+          // works! this.$f7router.navigate('/');
           router.back();
+        })
+        .catch(error => {
+         app.dialog.alert(error.message, () => {
+        console.log(error.message);
         });
+        });
+
+        e.preventDefault();
       },
     },
   };

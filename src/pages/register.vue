@@ -37,14 +37,20 @@ export default {
     },
     methods: {
       register: function(e) {
+        const self = this;
+        const app = self.$f7;
+        const router = self.$f7router;
         firebase.auth().createUserWithEmailAndPassword(this.username, this.password)
         .then(user => {
           console.log(`User created for ${user.email}`);
-          this.$router.push('/');
-          
+          // works! this.$f7router.navigate('/');
+          router.back();
         })
         .catch(error => {
-         console.log(error.message);
+         app.dialog.alert(error.message, () => {
+        console.log(error.message);
+        });
+         
         });
 
         e.preventDefault();
@@ -53,9 +59,10 @@ export default {
         const self = this;
         const app = self.$f7;
         const router = self.$f7router;
-        app.dialog.alert(`Username: ${self.username}<br>Password: ${self.password}`, () => {
-          router.back();
-        });
+        //app.dialog.alert(`Username: ${self.username}<br>Password: ${self.password}`, () => {
+        //  router.back();
+        //});
+
       },
     },
   };
