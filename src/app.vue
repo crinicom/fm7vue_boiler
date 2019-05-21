@@ -68,6 +68,8 @@
 // Import Routes
 import routes from './routes.js'
 
+
+
 export default {
   data() {
     return {
@@ -78,6 +80,7 @@ export default {
         theme: 'auto', // Automatic theme detection
         // App routes
         routes: routes,
+        
       },
     }
   }

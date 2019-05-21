@@ -37,7 +37,8 @@ export default {
     },
     methods: {
       register: function(e) {
-        const self = this;
+        this.$store.dispatch('signUserUp', {username: this.username, password: this.password})
+       /*  const self = this;
         const app = self.$f7;
         const router = self.$f7router;
         firebase.auth().createUserWithEmailAndPassword(this.username, this.password)
@@ -51,7 +52,7 @@ export default {
         console.log(error.message);
         });
          
-        });
+        }); */
 
         e.preventDefault();
       },

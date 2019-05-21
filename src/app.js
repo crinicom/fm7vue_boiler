@@ -2,6 +2,7 @@
 import Vue from 'vue';
 import firebase from 'firebase';
 import './firebaseInit';
+//import {store} from './store'
 
 // Import F7
 import Framework7 from 'framework7/framework7.esm.bundle.js';
@@ -18,17 +19,21 @@ import AppStyles from './css/app.css';
 
 // Import App Component
 import App from './app.vue';
+import {store} from './store'
 
 // Init F7 Vue Plugin
 Framework7.use(Framework7Vue)
 
 // Init App
-new Vue({
+const myApp = new Vue({
   el: '#app',
   template: '<app/>',
+  store,
 
   // Register App Component
   components: {
     app: App
   }
 });
+
+export default myApp;
