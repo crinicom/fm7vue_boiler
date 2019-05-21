@@ -29,18 +29,33 @@ export default {
     data() {
       return {
         isLoggedIn: false,
-        currentUser: false,
-        menuItems: [
-          {icon:'', title:'Register', link: '/register/'},
-          {icon:'', title:'Login', link: '/login/'},
-          {icon:'', title:'Logout', link: '/login/', handler:"logout"},
-          {icon:'', title:'item1', link: '/'},
-          {icon:'', title:'item2', link: '/'},
-          {icon:'', title:'item3', link: '/'}
-          
-        ]
+        currentUser: false
+        
       }
     },
+    computed: {
+      menuItems () {
+        let menuItems = [
+          {icon:'', title:'Register', link: '/register/'},
+          {icon:'', title:'Login', link: '/login/'}
+          
+        ]
+        if(this.userIsAuthenticated) {
+          menuItems = [
+         
+            {icon:'', title:'item1', link: '/'},
+            {icon:'', title:'item2', link: '/'},
+            {icon:'', title:'item3', link: '/'},
+            {icon:'', title:'Logout', link: '/login/', handler:"logout"}
+          ]
+        }
+        return menuItems;
+      },
+      userIsAuthenticated () {
+        return this.$store.getters.user !== null && this.$store.getters.user !== undefined
+      }
+    },
+
     methods: {
       
       logout: function() {

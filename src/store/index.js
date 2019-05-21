@@ -30,11 +30,36 @@ export const store = new Vuex.Store({
                     id: user.uid,
                     registeredProjects: []
                 }
-                commit('setUser',newUser);
-                //myApp.$f7.router.navigate('/');
-                myApp.$f7ready(($f7) => {$f7.views.main.router.navigate('/');});
-                //self.$f7ready(($f7) => {$f7.views.main.router.navigate('/');});
-                //app.router.navigate('/');
+                commit('setUser',newUser); // ejecuta la acción SINCRONA
+               
+                // FUNCIONA!  Pero se reemplazó por un watch a nivel de register.vue, que hace un router.push('/') 
+                // cuando detecta que el STORE tiene un usuario conectado
+                //myApp.$f7ready(($f7) => {$f7.views.main.router.navigate('/');});
+               
+            })
+            .catch(error => {
+                console.log(error.message);
+               /*  app.dialog.alert(error.message, () => {
+                    console.log(error.message);
+                    }); */
+            })
+        },
+        signUserIn ({commit}, payload) {
+            const self = this;
+            const app = self.$f7;
+           // const router = self.$f7router;
+            firebase.auth().signInWithEmailAndPassword(payload.username, payload.password)
+            .then(user => { 
+                const newUser = {
+                    id: user.uid,
+                    registeredProjects: []
+                }
+                commit('setUser',newUser); // ejecuta la acción SINCRONA
+               
+                // FUNCIONA!  Pero se reemplazó por un watch a nivel de register.vue, que hace un router.push('/') 
+                // cuando detecta que el STORE tiene un usuario conectado
+                //myApp.$f7ready(($f7) => {$f7.views.main.router.navigate('/');});
+               
             })
             .catch(error => {
                 console.log(error.message);

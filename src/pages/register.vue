@@ -35,6 +35,18 @@ export default {
         password: '',
       };
     },
+    computed: {
+      user () {
+        return this.$store.getters.user
+      }
+    },
+    watch: {
+      user(value) {
+        if (value !== null && value !== undefined) {
+          this.$f7router.navigate('/');
+        }
+      }
+    },
     methods: {
       register: function(e) {
         this.$store.dispatch('signUserUp', {username: this.username, password: this.password})
@@ -55,16 +67,7 @@ export default {
         }); */
 
         e.preventDefault();
-      },
-      signIn() {
-        const self = this;
-        const app = self.$f7;
-        const router = self.$f7router;
-        //app.dialog.alert(`Username: ${self.username}<br>Password: ${self.password}`, () => {
-        //  router.back();
-        //});
-
-      },
+      }
     },
   };
 </script>

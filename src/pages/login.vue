@@ -43,27 +43,13 @@ import firebase from 'firebase';
     watch: {
       user (value) {
         if (value !== null && value !== undefined) {
-          router.push('/')
+          this.$f7router.navigate('/');
         }
       }
     },
     methods: {
       signIn: function(e) {
-        const self = this;
-        const app = self.$f7;
-        const router = self.$f7router;
-       
-        firebase.auth().signInWithEmailAndPassword(this.username, this.password)
-        .then(user => {
-          console.log(`User logged in as ${user.email}`);
-          // works! this.$f7router.navigate('/');
-          //router.back();
-        })
-        .catch(error => {
-         app.dialog.alert(error.message, () => {
-        console.log(error.message);
-        });
-        });
+        this.$store.dispatch('signUserIn', {username: this.username, password: this.password})
 
         e.preventDefault();
       },
