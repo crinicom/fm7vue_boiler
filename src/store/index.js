@@ -66,8 +66,16 @@ export const store = new Vuex.Store({
                /*  app.dialog.alert(error.message, () => {
                     console.log(error.message);
                     }); */
-            })
-            }
+            });
+        },
+    logout ({commit}, payload) {
+        firebase.auth().signOut().then(() => {
+            this.isLoggedIn = false;
+            console.log("logged out!");
+            commit('setUser', null);
+             //router.navigate('/login/');
+            });
+    }
     },
     getters: {
         loadedProjects (state) {

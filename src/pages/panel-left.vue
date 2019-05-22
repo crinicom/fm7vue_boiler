@@ -59,13 +59,14 @@ export default {
     methods: {
       
       logout: function() {
-        const self = this;
+        this.$store.dispatch('logout');
+        /* const self = this;
         const router = self.$f7router;
         firebase.auth().signOut().then(() => {
           this.isLoggedIn = false;
           console.log("logged out!");
            //router.navigate('/login/');
-          });
+          }); */
       },
       handle_function_call(function_name) {
       this[function_name]()
